@@ -2,25 +2,7 @@ precision mediump float;
 
 varying vec4 v_Color;
 
-void main() {
-
-    // Purple
-    vec3 outlineColor = vec3(0.7, 0.2, 1.0);
-
-    float thickness =
-        fwidth(v_Color.r) +
-        fwidth(v_Color.g) +
-        fwidth(v_Color.b);
-
-    float core = smoothstep(0.0, 1.0, thickness * 2.0);
-
-    // Glow lebih lebar
-    float glow = smoothstep(0.0, 1.0, thickness * 20.0);
-
-    float alpha = clamp(core + glow * 0.7, 0.0, 1.0);
-
-    // Glow lebih terang
-    vec3 glowColor = outlineColor * 1.8;
-
-    gl_FragColor = vec4(glowColor, alpha);
+void main()
+{
+    gl_FragColor = v_Color;
 }
